@@ -15,7 +15,7 @@ MongoClient.connect('mongodb://localhost:27017')
     app.use('/api/users', usersRouter);
 
     const db = client.db('activities'); 
-    const activityCollection = db.collection('activites');
+    const activityCollection = db.collection('activities');
     const activitiesRouter = createRouter(activitiesCollection);
     app.use('/api/activities', activitiesRouter);
 
