@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../css/NavBar.css";
 import { Link } from "react-router-dom";
-import { HamburgerSlider as Hamburger } from "react-animated-burgers";
+import { HamburgerSlider as Hamburger } from "../../node_modules/react-animated-burgers";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
