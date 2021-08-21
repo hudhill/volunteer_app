@@ -12,8 +12,9 @@
     background-color: #5bace4;
 }
 
-.point-count p {
+.point-count .your-points {
     color: white;
     padding: 5px;
+    margin: 5px;
     text-align: center;
 }
