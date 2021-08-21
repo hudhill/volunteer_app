@@ -1,9 +1,10 @@
-import Collapsible from 'react-collapsible';
-import '../css/ActivityDetails.css';
+import Collapsible from "react-collapsible";
+import "../css/ActivityDetails.css";
+import UserContext from "../context/userContext.js";
+import { haveIApplied } from "../helpers/helpers";
 
-const ActivityDetails = ({ activity, apply, applied }) => {
-
-  const datetime = new Date(activity.datetime)
+const ActivityDetails = ({ activity, apply, setActivities }) => {
+  const datetime = new Date(activity.datetime);
   return (
     <div className="activity-detail">
       <h1>{activity.title}</h1>
@@ -11,17 +12,31 @@ const ActivityDetails = ({ activity, apply, applied }) => {
       <p>Location: {activity.location.description}</p>
       <p>Date: {datetime.toDateString()} </p>
       <p>Time: {datetime.toLocaleTimeString()}</p>
-      
+
       <p>Duration: {activity.duration}</p>
-      <Collapsible trigger={<button>More Details</button>}>
-        <p>{activity.description}</p>
-        {applied ? (
-          <div>APPLIED</div>
-        ) : (
-          <button onClick={() => apply(activity)} className="button">Apply Now!</button>
-        )}
-      </Collapsible>
-      <hr/>
+      <UserContext.Consumer>
+        {(user) => {
+          if (!user) return "loading";
+          return (
+            <Collapsible trigger={<button>More Details</button>}>
+              <p>{activity.description}</p>
+              {haveIApplied(activity, user) ? (
+                <div>APPLIED</div>
+              ) : (
+                <button
+                  onClick={() =>
+                    apply(activity, user).then((data) => setActivities(data))
+                  }
+                  className="button"
+                >
+                  Apply Now!
+                </button>
+              )}
+            </Collapsible>
+          );
+        }}
+      </UserContext.Consumer>
+      <hr />
     </div>
   );
 };

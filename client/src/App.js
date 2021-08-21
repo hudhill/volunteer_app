@@ -10,9 +10,10 @@ import ErrorPage from "./components/ErrorPage";
 import Header from "./components/Header";
 import MyRewards from "./containers/MyRewards";
 import EditProfile from "./containers/EditProfile";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { userRedeemRewards } from "./helpers/helpers";
 import { getUsers, updateUser } from "./services/UserService";
+import UserContext from "./context/userContext";
 
 const App = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -56,6 +57,7 @@ const App = () => {
   return (
     <Router>
       <>
+      <UserContext.Provider value={user}>
         <Header />
         <NavBar />
         <Switch>
@@ -97,6 +99,7 @@ const App = () => {
           <Route component={ErrorPage} />
         </Switch>
         <Footer />
+        </UserContext.Provider>
       </>
     </Router>
   );
