@@ -3,7 +3,6 @@ class Charity {
     this.name = name;
     this.description = description;
   }
-  
 }
 
 module.exports = Charity;

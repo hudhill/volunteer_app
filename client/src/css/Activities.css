@@ -1,11 +1,8 @@
 .hidden {
-  display: none
+  display: none;
 }
 
-
-
 .map-button {
-  margin:20px;
+  margin: 20px;
   margin-top: -10px;
-  
 }

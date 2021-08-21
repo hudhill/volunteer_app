@@ -1,14 +1,14 @@
 .get-rewards-search {
-    margin: 20px
+  margin: 20px;
 }
 
 .point-count {
-    background-color: #5bace4;
+  background-color: #5bace4;
 }
 
 .point-count .your-points {
-    color: white;
-    padding: 5px;
-    margin: 5px;
-    text-align: center;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
 }

@@ -1,33 +1,32 @@
 .activity-detail {
-    background-color: rgb(216, 216, 216);
-    margin: 10px;
-    padding: 20px;
-    
+  background-color: rgb(216, 216, 216);
+  margin: 10px;
+  padding: 20px;
 }
 
 .button {
-    background-color: #86c55d;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor:pointer;
+  background-color: #86c55d;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .Collapsible {
-    padding: 5px;
-    line-height: 1.5;
+  padding: 5px;
+  line-height: 1.5;
 }
 
-.Collapsible__trigger{
-    cursor:pointer;
-    display:block;
-    font-weight: bold;
+.Collapsible__trigger {
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
 }
 
 .activity-detail h1 {
-    color: #F60A8F;
+  color: #f60a8f;
 }

@@ -1,11 +1,10 @@
 .edit-form {
-    background-color: rgb(216, 216, 216);
-    margin: 10px;
-    padding: 20px;
+  background-color: rgb(216, 216, 216);
+  margin: 10px;
+  padding: 20px;
 }
 
 .go-back-button a {
-    text-decoration: none;
-    color: #F60A8F;
-        
+  text-decoration: none;
+  color: #f60a8f;
 }
