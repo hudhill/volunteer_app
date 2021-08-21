@@ -16,7 +16,6 @@ function userRedeemRewards(user, reward ) {
         (reward) => reward._id
       );
       newUser.redeemedRewards.push(reward._id);
-      console.log(newUser)
       return newUser
 }
 

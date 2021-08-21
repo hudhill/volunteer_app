@@ -1,14 +1,11 @@
 .header-image img {
-    
-    height: auto;
-    max-width: 300px;
-    padding: 10px;
+  height: auto;
+  max-width: 300px;
+  padding: 10px;
 }
 
 .header-image {
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
 }
-
-

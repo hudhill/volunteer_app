@@ -1,108 +1,38 @@
-
-/* 
-.nav-bar {
-    background-color: rgb(0, 0, 0);
-
-.nav-bar {
-    background-color: rgb(160, 18, 173);
-    overflow: hidden;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibre, 'Trebuchet MS', sans-serif;
-    
-}
-  
-  
-.nav-bar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-  
-  
-.nav-bar a:hover {
-  background-color: #F60A8F;
-  color: black;
-}
-  
-  
-.nav-bar a.active {
-  background-color: #5bace4;
-  color: white;
-}
-  
-.nav-bar .icon {
-  display: none;
-}
-
-
-@media screen and (max-width: 600px) {
-  .nav-bar link:not(:first-child) {display: none;}
-  .nav-bar link.icon {
-    float: right;
-    display: block;
-  }
-}
-  
-@media screen and (max-width: 600px) {
-  .nav-bar.responsive {position: relative;}
-  .nav-bar.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .nav-bar.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-} */
-
-
 #nav-container {
   margin: auto;
   text-align: center;
 }
 
-
 .nav-bar {
   position: relative;
   background-color: rgb(0, 0, 0);
-  overflow: hidden;  
-
+  overflow: hidden;
 }
 
 .nav-bar a {
   float: left;
   color: #f2f2f2;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-align: center;
   padding: 16px 26px;
   text-decoration: none;
   font-size: 20px;
-  
-  
 }
 
 .nav-bar a:hover {
-  background-color: #F60A8F;
+  background-color: #f60a8f;
 }
 
-
-
 /* @media screen and (max-width: 600px) { */
-  .nav-bar, .nav-bar a {
-    float: none;
-    display: block;
-  }
-  
-  /* .nav-bar-centered a {
+.nav-bar,
+.nav-bar a {
+  float: none;
+  display: block;
+}
+
+/* .nav-bar-centered a {
     position: relative;
     top: 0;
     left: 0;
     transform: none;
   } */
-
-
