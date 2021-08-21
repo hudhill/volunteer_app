@@ -2,18 +2,13 @@
     margin: 20px
 }
 
-.reward-category-buttons {
-    
-/* so frustrating */
-    
-}
-
 .point-count {
     background-color: #5bace4;
 }
 
-.point-count p {
+.point-count .your-points {
     color: white;
     padding: 5px;
+    margin: 5px;
     text-align: center;
 }

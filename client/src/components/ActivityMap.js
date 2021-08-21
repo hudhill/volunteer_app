@@ -25,7 +25,7 @@ const ActivityMap = ({activities, apply, user}) => {
             const datetime = new Date(activity.datetime)
             return (
               <Marker
-                key={activity.id}
+                key={activity._id}
                 title={activity.title}
                 position={activity.location.coordinates}
               >

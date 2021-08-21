@@ -33,9 +33,9 @@ const Rewards = ({ redeemReward, user }) => {
       <button onClick={() => setCategory("Digital")}>Digital</button>
       </div>
       <div className="point-count">
-      <p>
+      <div className="your-points">
         <strong>Your Points:</strong> {user.noOfPoints}
-      </p>
+      </div>
       </div>
       </div>
       <RewardList rewards={rewards} redeemReward={redeemReward} user={user} category={category} />
