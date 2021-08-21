@@ -2,10 +2,10 @@ import React from "react";
 import ActivityDetails from "./ActivityDetails";
 const ActivityList = ({ activities, setActivities }) => {
 
-  const activitiesList = activities.map((activity, index) => {
+  const activitiesList = activities.map((activity) => {
     return (
       <ActivityDetails
-        key={index}
+        key={activity._id}
         activity={activity}
         setActivities={setActivities}
       />
