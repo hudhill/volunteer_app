@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Collapsible from 'react-collapsible';
 import '../css/ActivityDetails.css';
 

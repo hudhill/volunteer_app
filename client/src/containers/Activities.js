@@ -8,42 +8,23 @@ import { getCharities } from "../services/CharitiesService";
 
 const Activities = ({ user }) => {
   const [activities, setActivities] = useState([]);
-  const [filteredActivities, setFilteredActivities] = useState([]);
   const [charities, setCharities] = useState([]);
   const [listView, setListView] = useState(true);
+  const [charity, setCharity] = useState("all");
 
   useEffect(() => {
     getActivities().then((activities) => {
       setActivities(activities);
-      setFilteredActivities(activities);
     });
     getCharities().then((charities) => {
       setCharities(charities);
     });
   }, []);
 
-  useEffect(() => {
-    resetActivities();
-  }, [activities]);
-
-  const resetActivities = () => {
-    setFilteredActivities(activities);
+  function filterActivitiesByCharity(activities, charityId) {
+    if (charity === "all") return activities;
+    return activities.filter((activity) => activity.charity._id === charityId);
   }
-
-  const getActivitiesByCharity = (event) => {
-    const activitiesByCharity = activities.filter(
-      (activity) => activity.charity._id === event.target.value
-    );
-    setFilteredActivities(activitiesByCharity);
-  };
-
-  const handleChange = () => {
-    if (listView) {
-      setListView(false);
-    } else {
-      setListView(true);
-    }
-  };
 
   function apply(activity) {
     let applications = [...activity.applications];
@@ -64,30 +45,28 @@ const Activities = ({ user }) => {
     <>
       <SearchBar
         charities={charities}
-        getActivitiesByCharity={getActivitiesByCharity}
-        resetActivities={resetActivities}
+        setCharity={setCharity}
       />
-      <p>
+      <div>
         <div className="map-button">
-          <button onClick={handleChange}>
+          <button onClick={() => setListView(!listView)}>
             {listView ? "Map View" : "List View"}
           </button>
         </div>
-      </p>
+      </div>
       {listView ? (
         <ActivityList
           user={user}
           apply={apply}
-          activities={filteredActivities}
+          activities={filterActivitiesByCharity(activities, charity)}
         />
       ) : (
-        <ActivityMap 
-          user={user} 
-          apply={apply} 
-          activities={filteredActivities} 
+        <ActivityMap
+          user={user}
+          apply={apply}
+          activities={filterActivitiesByCharity(activities, charity)}
         />
       )}
-
     </>
   );
 };

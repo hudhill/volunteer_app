@@ -10,8 +10,7 @@ import ErrorPage from "./components/ErrorPage";
 import Header from "./components/Header";
 import MyRewards from "./containers/MyRewards";
 import EditProfile from "./containers/EditProfile";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { userRedeemRewards } from "./helpers/helpers";
 import { getUsers, updateUser } from "./services/UserService";
 
