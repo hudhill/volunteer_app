@@ -3,10 +3,10 @@ import "../css/Activities.css";
 import SearchBar from "../components/SearchBar";
 import ActivityList from "../components/ActivityList";
 import ActivityMap from "../components/ActivityMap";
-import { getActivities, updateActivity } from "../services/ActivitiesService";
+import { getActivities } from "../services/ActivitiesService";
 import { getCharities } from "../services/CharitiesService";
 
-const Activities = ({ user }) => {
+const Activities = () => {
   const [activities, setActivities] = useState([]);
   const [charities, setCharities] = useState([]);
   const [listView, setListView] = useState(true);
@@ -25,22 +25,6 @@ const Activities = ({ user }) => {
     if (charity === "all") return activities;
     return activities.filter((activity) => activity.charity._id === charityId);
   }
-
-  function apply(activity) {
-    let applications = [...activity.applications];
-    applications = applications.map((application) => {
-      return { status: application.status, user: application.user._id };
-    });
-    const newActivity = { applications };
-    newActivity.applications.push({ status: "pending", user: user._id });
-    updateActivity(activity._id, newActivity).then(() =>
-      getActivities().then((data) => {
-        setActivities(data);
-      })
-    );
-  }
-
-  if (!user) return "loading...";
   return (
     <>
       <SearchBar
@@ -56,15 +40,13 @@ const Activities = ({ user }) => {
       </div>
       {listView ? (
         <ActivityList
-          user={user}
-          apply={apply}
           activities={filterActivitiesByCharity(activities, charity)}
+          setActivities={setActivities}
         />
       ) : (
         <ActivityMap
-          user={user}
-          apply={apply}
           activities={filterActivitiesByCharity(activities, charity)}
+          setActivities={setActivities}
         />
       )}
     </>

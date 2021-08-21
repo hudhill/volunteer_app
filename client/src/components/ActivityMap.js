@@ -3,8 +3,10 @@ import {MapContainer, Circle, TileLayer, Marker, Popup} from 'react-leaflet';
 import { haveIApplied } from '../helpers/helpers';
 import {Popup as Pup} from 'reactjs-popup';
 import '../css/ActivityMap.css'
+import UserContext from '../context/userContext';
+import {apply} from "../services/apply.js"
 
-const ActivityMap = ({activities, apply, user}) => {
+const ActivityMap = ({activities, setActivites}) => {
 
   return (
     <div>
@@ -18,8 +20,8 @@ const ActivityMap = ({activities, apply, user}) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Circle center={[55.947762, -3.189037]} radius={2000} />
-
-        {activities.map(
+        <UserContext.Consumer>
+        {user => activities.map(
           activity => {
             const applied = haveIApplied(activity, user)
             const datetime = new Date(activity.datetime)
@@ -38,13 +40,14 @@ const ActivityMap = ({activities, apply, user}) => {
                   <p>Location: {activity.location.description}</p>
                   <Pup trigger={<button>More Details</button>} position="top center" className="pup">
                     <p>{activity.description}</p>
-                    {applied ? <div>APPLIED</div> : <button onClick={() => apply(activity)}>Apply Now!</button>}
+                    {applied ? <div>APPLIED</div> : <button onClick={() => apply(activity, user).then(data => setActivites(data))}>Apply Now!</button>}
                   </Pup>
                 </Popup>
               </Marker>
             )
           }
         )}
+        </UserContext.Consumer>
 
       </MapContainer>
     </div>

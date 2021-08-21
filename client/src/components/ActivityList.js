@@ -1,17 +1,13 @@
 import React from "react";
 import ActivityDetails from "./ActivityDetails";
-import { haveIApplied } from "../helpers/helpers";
+const ActivityList = ({ activities, setActivities }) => {
 
-const ActivityList = ({ activities, apply, user }) => {
-
-  const activitiesList = activities.map((activity, index) => {
-    const applied = haveIApplied(activity, user)
+  const activitiesList = activities.map((activity) => {
     return (
       <ActivityDetails
-        key={index}
+        key={activity._id}
         activity={activity}
-        apply={apply}
-        applied={applied}
+        setActivities={setActivities}
       />
     );
   });

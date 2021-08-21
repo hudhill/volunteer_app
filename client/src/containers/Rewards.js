@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import RewardList from "../components/RewardList";
 import '../css/Rewards.css';
+import UserContext from "../context/userContext";
 
 
-const Rewards = ({ redeemReward, user }) => {
+const Rewards = ({ redeemReward }) => {
   const url = "http://localhost:5000/api/rewards";
   const [rewards, setRewards] = useState([]);
   const [category, setCategory] = useState("all")
@@ -20,7 +21,12 @@ const Rewards = ({ redeemReward, user }) => {
       })
       .catch((err) => console.error(err));
   };
-  if (!user) return "loading...";
+
+  function displayUserPoints(user) {
+    if (!user) return "loading points..."
+    return user.noOfPoints
+  }
+
   return (
     <>
       <div className="get-rewards-search">
@@ -34,11 +40,11 @@ const Rewards = ({ redeemReward, user }) => {
       </div>
       <div className="point-count">
       <div className="your-points">
-        <strong>Your Points:</strong> {user.noOfPoints}
+        <strong>Your Points:</strong> <UserContext.Consumer>{user => displayUserPoints(user)}</UserContext.Consumer>
       </div>
       </div>
       </div>
-      <RewardList rewards={rewards} redeemReward={redeemReward} user={user} category={category} />
+      <RewardList rewards={rewards} redeemReward={redeemReward} category={category} />
 
     </>
   );

@@ -10,9 +10,10 @@ import ErrorPage from "./components/ErrorPage";
 import Header from "./components/Header";
 import MyRewards from "./containers/MyRewards";
 import EditProfile from "./containers/EditProfile";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { userRedeemRewards } from "./helpers/helpers";
 import { getUsers, updateUser } from "./services/UserService";
+import UserContext from "./context/userContext";
 
 const App = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -28,19 +29,17 @@ const App = () => {
   }, [submitted]);
 
   useEffect(() => {
-    getUsers()
-      .then((users) => {
-        setAllUsers(users);
-        setUser(users[0]);
-      });
+    getUsers().then((users) => {
+      setAllUsers(users);
+      setUser(users[0]);
+    });
   }, []);
 
   function handleUpdateUser(data) {
-    updateUser(user._id, data)
-      .then((newUser) => {
-        setUser(newUser);
-        setSubmitted(true);
-      });
+    updateUser(user._id, data).then((newUser) => {
+      setUser(newUser);
+      setSubmitted(true);
+    });
   }
 
   function redeemReward(reward, message) {
@@ -56,47 +55,44 @@ const App = () => {
   return (
     <Router>
       <>
-        <Header />
-        <NavBar />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={() => (
-              <HomePage user={user} allUsers={allUsers} setUser={setUser} />
-            )}
-          />
-          <Route
-            path="/rewards"
-            component={() => (
-              <Rewards redeemReward={redeemReward} user={user} />
-            )}
-          />
-          <Route
-            path="/activities"
-            component={() => <Activities user={user} />}
-          />
-          <Route
-            path="/myaccount"
-            component={() => <MyAccount user={user} />}
-          />
-          <Route
-            path="/myrewards"
-            component={() => <MyRewards user={user} />}
-          />
-          <Route
-            path="/editprofile"
-            component={() => (
-              <EditProfile
-                user={user}
-                updateUser={handleUpdateUser}
-                submitted={submitted}
-              />
-            )}
-          />
-          <Route component={ErrorPage} />
-        </Switch>
-        <Footer />
+        <UserContext.Provider value={user}>
+          <Header />
+          <NavBar />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={() => (
+                <HomePage user={user} allUsers={allUsers} setUser={setUser} />
+              )}
+            />
+            <Route
+              path="/rewards"
+              component={() => <Rewards redeemReward={redeemReward} />}
+            />
+            <Route path="/activities" component={() => <Activities />} />
+            <Route
+              path="/myaccount"
+              component={() => <MyAccount user={user} />}
+            />
+            <Route
+              path="/myrewards"
+              component={() => <MyRewards user={user} />}
+            />
+            <Route
+              path="/editprofile"
+              component={() => (
+                <EditProfile
+                  user={user}
+                  updateUser={handleUpdateUser}
+                  submitted={submitted}
+                />
+              )}
+            />
+            <Route component={ErrorPage} />
+          </Switch>
+          <Footer />
+        </UserContext.Provider>
       </>
     </Router>
   );
