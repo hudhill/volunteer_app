@@ -232,7 +232,7 @@ MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
           "Scott Kivlin",
           new Date(1991, 1, 4),
           "I'm something of an altruist myself, just out here trying to make the world a better place. So the other day, I was volunteering right, and I thought to myself, hey it's great to work for free and all, but you know what would make it even better... getting paid. So I mentioned my idea to Sarah and she was like, well it's not volunteering if you're getting paid is it? And I was like, yea I guess you're right.",
-          230,
+          100000,
           [],
           "email@example.com",
           "07777777777"
