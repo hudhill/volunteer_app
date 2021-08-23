@@ -68,7 +68,11 @@ function createActivityRouter(
   router.delete("/:id", (req, res) => {
     const id = req.params.id;
     activityRepository
-      .destroy(userCollection, rewardCollection, id)
+      .destroy(activityCollection,
+        userCollection,
+        charityCollection,
+        rewardCollection,
+        id)
       .then((allItems) => res.json(allItems))
       .catch(errorCatchBuild(res));
   });
