@@ -40,10 +40,10 @@ function createActivityRouter(
 
   // CREATE (POST)
   router.post("/", (req, res) => {
-    const newData = req.body;
+    const incomingActivity = req.body;
     activityRepository
-      .save(userCollection, newData)
-      .then((newUser) => res.json(newUser))
+      .save(activityCollection, incomingActivity)
+      .then((newActivity) => res.json(newActivity))
       .catch(errorCatchBuild(res));
   });
 
