@@ -2,8 +2,9 @@ import Collapsible from "react-collapsible";
 import "../css/ActivityDetails.css";
 import UserContext from "../context/userContext.js";
 import { haveIApplied } from "../helpers/helpers";
+import { apply } from "../services/apply";
 
-const ActivityDetails = ({ activity, apply, setActivities }) => {
+const ActivityDetails = ({ activity, setActivities }) => {
   const datetime = new Date(activity.datetime);
   return (
     <div className="activity-detail">
